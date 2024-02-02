@@ -1,0 +1,108 @@
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width:550px;
+    background-color: var(--sc-color-wh);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 3px 3px 10px var(--sh-color-grey);
+    position: relative;
+    z-index: 2;
+}
+.form::before{
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-shadow: -5px -3px 10px var(--sh-color-blue);
+    border-radius: 10px;
+    z-index: -1;
+}
+
+.form__items{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    &__lbl{
+        display: flex;
+        justify-content: space-between;
+        margin: 5px 0px;
+
+        label{
+            color: var(--sc-color-dark);
+            font-weight: 400;
+        }
+       
+    }
+    &__errors{
+        display: flex;
+        color: var(--sc-color-red);
+        
+        span{
+            margin: 0px 5px;
+        }
+        p{
+            font-weight: 400;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+    }
+}
+
+.form__items__input{
+    height: 35px;
+    margin: 10px 0px;
+    border: none;
+    border-bottom: 1px solid var(--sc-color-grey-lg);
+    padding-left: 5px;
+    outline: none;
+    background-color: var(--sc-color-wh);
+    &:focus{
+        border: 2px solid var(--sc-color-blue);
+        box-shadow: 0 0 5px var(--sc-color-blue);
+        transition: box-shadow 300ms ease-in-out;
+    }
+ 
+    &::placeholder{
+        color: var(--sc-color-blue);
+        padding-left: 5px;
+    }
+}
+
+.form__items__lbl--textarea{
+    height: 100%;
+    max-height: 50px;
+    min-height: 30px;
+    resize: none;
+}
+.form__items__slct{
+    border: none;
+    height: 30px;
+    border-bottom: 1px solid var(--sc-color-grey-lg);
+    color: var(--sc-color-blue);
+    background-color: var(--sc-color-wh);
+    outline: none;
+    option{
+        color: var(--sc-color-blue);
+        padding: 10px;
+    }
+}
+
+.form-btn{
+    width: 90%; 
+    &__submit{
+        width: 30%;
+        height: 30px;
+        margin: 15px 0px;
+        border: none;
+        border-radius: 15px;
+        color: var(--sc-color-wh);
+        box-shadow: 3px 3px 6px var(--sh-color-grey);
+        background-color: var(--sc-color-blue);
+    }
+}
+
