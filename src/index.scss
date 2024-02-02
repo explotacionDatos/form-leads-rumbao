@@ -1,0 +1,14 @@
+/*ABSTRACTS*/
+@import "./scss/abstracts/variables";
+
+/*BASE*/
+@import "./scss/base/base";
+@import "./scss/base/resets";
+
+/*ICONS*/
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
+/*LAYOUT*/
+@import "./scss/layout/navbar.scss";
+@import "./scss/layout/FormRombao.scss";
+@import "./scss/layout/form.scss";
+@import "./scss/layout/footer.scss";
