@@ -1,28 +1,45 @@
 {
   "name": "form-leads-rumbao",
-  "version": "1.0.0",
-  "description": "server formulario",
-  "main": "index.js",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "proxy": "https://unocomaseis.dialcata.com",
   "scripts": {
-    "dev": "nodemon index.js",
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/explotacionDatos/form-leads-rumbao.git"
-  },
-  "author": "Gonzalo Vazquez",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/explotacionDatos/form-leads-rumbao/issues"
-  },
-  "homepage": "https://github.com/explotacionDatos/form-leads-rumbao#readme",
   "dependencies": {
     "axios": "^1.6.7",
     "cors": "^2.8.5",
     "dotenv": "^16.4.1",
-    "express": "^4.18.2",
-    "nodemon": "^3.0.3"
-  }
+    "framer-motion": "^11.0.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.49.3",
+    "sass": "^1.70.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.55.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "vite": "^5.0.8"
+  },
+  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/explotacionDatos/form-leads-rumbao.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/explotacionDatos/form-leads-rumbao/issues"
+  },
+  "homepage": "https://github.com/explotacionDatos/form-leads-rumbao#readme"
 }

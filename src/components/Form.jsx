@@ -50,7 +50,10 @@ const Form = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="form">
       <div className="form__status">
-        <div className="form__status__alert"></div>
+        <div className="form__status__alert">
+          <span class="material-symbols-outlined">check_circle</span>
+          <p>Formulario Enviado con exito</p>
+        </div>
       </div>
       <div className="form__items">
         <div className="form__items__lbl">
