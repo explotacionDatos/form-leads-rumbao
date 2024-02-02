@@ -5,8 +5,14 @@ services:
     container_name: form-leads-rumbao
     build: .
     restart: unless-stopped
-    env_file: .env
+    env_file: stack.env
     ports:
       - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
     stdin_open: true
     tty: true
+    networks:
+      - nginxproxymanager_default
+
+networks:
+  nginxproxymanager_default:
+     external: true
