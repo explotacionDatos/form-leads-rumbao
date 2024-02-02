@@ -1,0 +1,28 @@
+{
+  "name": "form-leads-rumbao",
+  "version": "1.0.0",
+  "description": "server formulario",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/explotacionDatos/form-leads-rumbao.git"
+  },
+  "author": "Gonzalo Vazquez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/explotacionDatos/form-leads-rumbao/issues"
+  },
+  "homepage": "https://github.com/explotacionDatos/form-leads-rumbao#readme",
+  "dependencies": {
+    "axios": "^1.6.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.1",
+    "express": "^4.18.2",
+    "nodemon": "^3.0.3"
+  }
+}
