@@ -51,7 +51,7 @@ const Form = () => {
     <form onSubmit={handleSubmit(onSubmit)} className="form">
       <div className="form__status">
         <div className="form__status__alert">
-          <span class="material-symbols-outlined">check_circle</span>
+          <span className="material-symbols-outlined">check_circle</span>
           <p>Formulario Enviado con exito</p>
         </div>
       </div>
@@ -60,7 +60,7 @@ const Form = () => {
           <label htmlFor="nombre_cliente">Nombre de Cliente:</label>
           {errors.nombre_cliente?.type === "required" && (
             <div className="form__items__errors">
-              <span class="material-symbols-outlined">report</span>
+              <span className="material-symbols-outlined">report</span>
               <p>Campo obligatorio</p>
             </div>
           )}
@@ -78,7 +78,7 @@ const Form = () => {
           <label htmlFor="telefono_cliente">Telefono de Cliente:</label>
           {errors.telefono_cliente?.type === "required" && (
             <div className="form__items__errors">
-              <span class="material-symbols-outlined">report</span>
+              <span className="material-symbols-outlined">report</span>
               <p>Campo obligatorio</p>
             </div>
           )}
@@ -97,7 +97,7 @@ const Form = () => {
           <label htmlFor="matricula">Matricula:</label>
           {errors.matricula?.type === "required" && (
             <div className="form__items__errors">
-              <span class="material-symbols-outlined">report</span>
+              <span className="material-symbols-outlined">report</span>
               <p>Campo obligatorio</p>
             </div>
           )}
@@ -117,7 +117,7 @@ const Form = () => {
           <label htmlFor="taller">Taller:</label>
           {errors.taller?.type === "required" && (
             <div className="form__items__errors">
-              <span class="material-symbols-outlined">report</span>
+              <span className="material-symbols-outlined">report</span>
               <p>Campo obligatorio</p>
             </div>
           )}
@@ -143,7 +143,7 @@ const Form = () => {
           <label htmlFor="motivo_visita">Motivo de visita:</label>
           {errors.motivo_visita?.type === "required" && (
             <div className="form__items__errors">
-              <span class="material-symbols-outlined">report</span>
+              <span className="material-symbols-outlined">report</span>
               <p>Campo obligatorio</p>
             </div>
           )}
@@ -189,7 +189,7 @@ const Form = () => {
           <label htmlFor="usuario_BDC">Usuario BDC:</label>
           {errors.usuario_BDC?.type === "required" && (
             <div className="form__items__errors">
-              <span class="material-symbols-outlined">report</span>
+              <span className="material-symbols-outlined">report</span>
               <p>Campo obligatorio</p>
             </div>
           )}
