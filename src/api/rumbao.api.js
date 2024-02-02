@@ -1,7 +1,5 @@
 import axios from "axios";
-// Accede a la variable de entorno en tiempo de ejecución
-const urlBackend = import.meta.env.URL_BACKEND;
+import url from "./url.json";
 
 export const sendFormRequest = async (data) =>
-  await axios.post(urlBackend, data);
-
+  await axios.post(url.url_server, data);
