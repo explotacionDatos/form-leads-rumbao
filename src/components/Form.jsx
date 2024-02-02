@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import taller from "../components/taller.json";
@@ -10,7 +9,7 @@ const Form = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
+  //estado de enviado
   const [send, setSend] = useState(false);
   //evento onsubmit para enviar formulario
   const onSubmit = async (data) => {
@@ -26,17 +25,36 @@ const Form = () => {
       aux9: data.observacion + " --- " + data.usuario_BDC,
     };
     console.log(params);
-    //realizo el envio del formulario
-    const sendForm = await sendFormRequest(params);
-    if (sendForm) {
-      setSend(true);
-    } else {
-      setSend(false);
+    try {
+      //realizo el envio del formulario
+      const sendForm = await sendFormRequest(params);
+      console.log(sendForm);
+      if (sendForm) {
+        setSend(true);
+      } else {
+        setSend(false);
+      }
+    } catch (error) {
+      console.log("Error: " + error.message);
     }
   };
-  useEffect(() => {});
+
+  //verificar que el estado de enviado haya cambiado
+  useEffect(() => {
+    if (send) {
+      console.log("Enviado");
+    }
+  }, [send]);
+
+  //elementos render
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="form">
+      <div className="form__status">
+        <div className="form__status__alert">
+          <span class="material-symbols-outlined">check_circle</span>
+          <p>Formulario Enviado con exito</p>
+        </div>
+      </div>
       <div className="form__items">
         <div className="form__items__lbl">
           <label htmlFor="nombre_cliente">Nombre de Cliente:</label>
