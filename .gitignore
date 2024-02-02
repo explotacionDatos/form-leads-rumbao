@@ -22,5 +22,6 @@ package-lock.json
 *.ntvs*
 *.njsproj
 *.sln
-*.sw?
+*.sw
 docker-compose.yml
+.env
