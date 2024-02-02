@@ -40,5 +40,9 @@ export default defineConfig({
     host: true,
     strictPort: true,
     port: process.env.NODE_LOCAL_PORT,
+    hmr: {
+      host: "localhost",
+      protocol: "ws",
+    },
   },
 });
