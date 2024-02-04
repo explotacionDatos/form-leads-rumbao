@@ -4,6 +4,7 @@
     align-items: center;
     width: 100%;
     max-width:550px;
+    margin: 20px;
     background-color: var(--sc-color-wh);
     border-radius: 10px;
     padding: 20px;
@@ -24,6 +25,49 @@
 }
 .form__status{
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 0px 20px 5px 20px;
+    border-bottom: 1px solid var(--sc-color-grey-lg);
+    &__icon{
+        font-size: 2.5rem;
+        color: var(--sc-color-blue);
+        margin-bottom: 0;
+    }
+    &__ok{
+        display: flex;
+        justify-content: space-between;
+        width: auto;
+        background-color: var(--sc-color-blue);
+        padding: 10px 10px;
+        color: var(--sc-color-wh);
+        border-radius: 5px;
+        span{
+            margin-right: 5px;
+        }
+    }
+    &__error{
+        display: flex;
+        justify-content: space-between;
+        width: auto;
+        background-color: var(--sc-color-red);
+        padding: 10px 10px;
+        color: var(--sc-color-wh);
+        border-radius: 5px;
+        span{
+            margin-right: 5px;
+        }
+    }
+    &__none{
+        display: flex;
+        justify-content: space-between;
+        width: auto;
+        opacity: 0;
+        padding: 10px 10px;
+        
+    }
 }
 
 .form__items{
@@ -60,7 +104,7 @@
     height: 35px;
     margin: 10px 0px;
     border: none;
-    border-bottom: 1px solid var(--sc-color-grey-lg);
+    border-bottom: 1px solid var(--sc-color-blue);
     padding-left: 5px;
     outline: none;
     background-color: var(--sc-color-wh);
@@ -96,6 +140,9 @@
 }
 
 .form-btn{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     width: 90%; 
     &__submit{
         width: 30%;
@@ -107,5 +154,29 @@
         box-shadow: 3px 3px 6px var(--sh-color-grey);
         background-color: var(--sc-color-blue);
     }
+    &__loader{
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        position: relative;
+        &::after,&::before{
+            content: '';
+            position: absolute;
+            border-radius: inherit;
+        }
+        &::before{
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(0deg, rgba(214,249,255,1) 22%, rgba(0,178,224,1) 73%);
+        }
+        &::after{
+            width: 75%;
+            height: 75%;
+            background-color: var(--sc-color-wh);
+            top: 12%;
+            left: 12%;
+        }
+    }
+    
 }
 

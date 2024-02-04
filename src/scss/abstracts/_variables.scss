@@ -5,13 +5,16 @@
     --font-Open-Sans: "Open Sans", sans-serif;
     //Colours
     --body-color:#f1f1f1;
+    --body-color-gr-linear:linear-gradient(180deg, rgba(244,244,244,1) 32%, rgba(195,239,250,1) 85%);
     --sc-color-blue:#00b2e0;
     --sc-color-dark:#3e3e3f;
     --sc-color-dark-2:#2b2b2b;
     --sc-color-grey-lg:#e6e7e9;
     --sc-color-wh:#fafafa;
     --sc-color-wh-2:#cccccc;
-    --sc-color-red:rgb(255, 36, 28);
+    --sc-color-wh-3:#fafafa;
+    --sc-color-red:#e02323;
     --sh-color-grey:#cecece;
-    --sh-color-blue:#d8f6ff;
+    --sh-color-wh:hsl(0, 100%, 99%);
+    --sh-color-blue:#bbedfc;
 }
