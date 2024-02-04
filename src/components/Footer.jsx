@@ -6,14 +6,11 @@ const Footer = () => {
       <div className="footer">
         <div className="footer__logo">
           {" "}
-          <img src="/src/assets/logo_custometric_cuadrado-2.png" alt="" />
+          <img src="/src/assets/nova-logo.png" alt="" />
         </div>
-        <div className="footer__info">
-          <h2 className="footer__info__h2">CUSTOMETRIC</h2>
-          <p className="footer__info__adress">
-            Calle Leonardo da Vinci, 20. Parque Científico y Tecnológico Cartuja
-            41092 Sevilla (España)
-          </p>
+        <div className="footer__logo">
+          {" "}
+          <img src="/src/assets/logo_custometric_cuadrado-2.png" alt="" />
         </div>
       </div>
       <p className="footer-ctnr__copyright">

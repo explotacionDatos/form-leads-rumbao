@@ -2,9 +2,15 @@ html,body{
     font-family: var(--font-Open-Sans);
     font-size: 16px;
     color:var(--sc-color-dark);
-    background-color: var(--body-color);
+    background-image: var(--body-color-gr-linear);
 }
 .app-ctnr{
     width: 100%;
     height: 100%;
+}
+
+@media (max-width:480px) {
+    html,body{
+        font-size: 15px;
+    }
 }
