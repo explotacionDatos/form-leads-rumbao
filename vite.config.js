@@ -29,6 +29,7 @@ fs.readFile(rutaArchivo, "utf-8", (error, data) => {
       console.error("Error al escribir en el archivo:", error);
       return;
     }
+
   });
 });
 
