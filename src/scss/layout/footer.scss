@@ -17,19 +17,20 @@
     max-width: 700px;
     margin-bottom: 50px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
 }
 
 .footer__logo{
-    width: 200px;
+    width: 150px;
     margin: 10px;
     img{
         width: 100%;
     }
 }
-.footer__info{
-    width: 300px;
-    &__h2{
-        margin-bottom: 10px;
+
+@media (max-width:480px){
+    .footer__logo{
+        width:85px;
     }
 }

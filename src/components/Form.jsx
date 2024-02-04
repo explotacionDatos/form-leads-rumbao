@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useState, useRef } from "react";
+import { animate, delay, easeInOut, motion, useAnimation } from "framer-motion";
 import { useForm } from "react-hook-form";
 import taller from "../components/taller.json";
 import { sendFormRequest } from "../api/rumbao.api";
@@ -9,12 +9,30 @@ const Form = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  //estado de enviado
-  const [send, setSend] = useState(false);
-  //evento onsubmit para enviar formulario
+  //estado de enviado y input matricula
+  const [send, setSend] = useState(2);
+  const [inputValue, setInputValue] = useState("");
+  //regex para validar campo matricula
+  const regex = /^[a-zA-Z0-9]{0,10}$/;
+  //animaciones
+  const loader = useAnimation();
+  const appearMsg = useAnimation();
+  const matricula = useAnimation();
+
+  //evento onChange del campo matricula
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
+  //evento onsubmit para enviar formulario -------------------------------------------------
+
   const onSubmit = async (data) => {
     const obj = taller.data.filter((combo) => combo.campaignId == data.taller);
-
+    loader.start({
+      opacity: 1,
+      rotate: [50, 180, 360, 0],
+      transition: { duration: 1, ease: "linear", repeat: Infinity },
+    });
     const params = {
       phoneNumber: data.telefono_cliente,
       campaignId: obj[0].campaignId,
@@ -29,58 +47,135 @@ const Form = () => {
       //realizo el envio del formulario
       const sendForm = await sendFormRequest(params);
       console.log(sendForm);
-      if (sendForm) {
-        setSend(true);
-      } else {
-        setSend(false);
-      }
+      setSend(1);
     } catch (error) {
       console.log("Error: " + error.message);
+      setSend(0);
     }
   };
+  //--------------------------------------------------------------------------------
+  const [status, setStatus] = useState(0);
+  const form = useRef(null);
 
   //verificar que el estado de enviado haya cambiado
   useEffect(() => {
-    if (send) {
-      console.log("Enviado");
+    if (regex.test(inputValue) == false) {
+      console.log("reject");
+      matricula.start({
+        borderColor: "#ff544",
+      });
+    } else {
+      matricula.start({
+        borderColor: "#00b2e0",
+      });
     }
-  }, [send]);
+    if (send == 1) {
+      setStatus(1);
+      loader.start({ opacity: 0 });
+      appearMsg.start({
+        opacity: [0, 1, 1, 1, 1, 0],
+        y: [10, 0, 0, 0, 0, 0, 0],
+        x: [0, 0, 0, 0, 0, 10],
+        transition: { duration: 4, ease: easeInOut, delay: 0.5 },
+      });
+      form.current.reset();
+      setTimeout(() => {
+        setStatus(2);
+        setSend(2);
+      }, 4600);
+    }
+    if (send == 0) {
+      setStatus(0);
+      loader.start({ opacity: 0 });
+      appearMsg.start({
+        opacity: [1, 1, 1, 0],
+        transition: { duration: 2, ease: easeInOut, delay: 0.5 },
+      });
+      form.current.reset();
+      setTimeout(() => {
+        setStatus(2);
+        setSend(2);
+      }, 2200);
+    }
+  }, [send, status, inputValue]);
 
   //elementos render
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="form">
+    <motion.form
+      onSubmit={handleSubmit(onSubmit)}
+      className="form"
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 1.2, ease: "circInOut" }}
+      ref={form}
+    >
       <div className="form__status">
-        <div className="form__status__alert">
-          <span className="material-symbols-outlined">check_circle</span>
-          <p>Formulario Enviado con exito</p>
-        </div>
+        <span className="material-symbols-outlined form__status__icon">
+          description
+        </span>
+        {status == 2 && (
+          <div className="form__status__none">
+            <span className="material-symbols-outlined">check_circle</span>
+            <p>Esperando acción</p>
+          </div>
+        )}
+        {status == 1 && (
+          <motion.div
+            className="form__status__ok"
+            initial={{ y: 10, opacity: 0 }}
+            animate={appearMsg}
+          >
+            <span className="material-symbols-outlined">check_circle</span>
+            <p>Enviado con exito</p>
+          </motion.div>
+        )}
+        {status == 0 && (
+          <motion.div
+            className="form__status__error"
+            initial={{ opacity: 0 }}
+            animate={appearMsg}
+          >
+            <span className="material-symbols-outlined">check_circle</span>
+            <p>Error al enviar el formulario</p>
+          </motion.div>
+        )}
       </div>
       <div className="form__items">
         <div className="form__items__lbl">
-          <label htmlFor="nombre_cliente">Nombre de Cliente:</label>
+          <label htmlFor="nombre_cliente">Nombre de cliente:</label>
           {errors.nombre_cliente?.type === "required" && (
-            <div className="form__items__errors">
+            <motion.div
+              className="form__items__errors"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+            >
               <span className="material-symbols-outlined">report</span>
               <p>Campo obligatorio</p>
-            </div>
+            </motion.div>
           )}
         </div>
 
         <input
           type="text"
           {...register("nombre_cliente", { required: true })}
-          placeholder="Nombre de Cliente"
+          placeholder="Nombre de cliente"
           className="form__items__input"
         ></input>
       </div>
       <div className="form__items">
         <div className="form__items__lbl">
-          <label htmlFor="telefono_cliente">Telefono de Cliente:</label>
+          <label htmlFor="telefono_cliente">Teléfono de cliente:</label>
           {errors.telefono_cliente?.type === "required" && (
-            <div className="form__items__errors">
+            <motion.div
+              className="form__items__errors"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+            >
               <span className="material-symbols-outlined">report</span>
               <p>Campo obligatorio</p>
-            </div>
+            </motion.div>
           )}
         </div>
 
@@ -94,32 +189,57 @@ const Form = () => {
       </div>
       <div className="form__items">
         <div className="form__items__lbl">
-          <label htmlFor="matricula">Matricula:</label>
+          <label htmlFor="matricula">Matrícula:</label>
           {errors.matricula?.type === "required" && (
-            <div className="form__items__errors">
+            <motion.div
+              className="form__items__errors"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+            >
               <span className="material-symbols-outlined">report</span>
               <p>Campo obligatorio</p>
-            </div>
+            </motion.div>
+          )}
+          {errors.matricula?.type === "pattern" && (
+            <motion.div
+              className="form__items__errors"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+            >
+              <span className="material-symbols-outlined">report</span>
+              <p>No se admiten caracteres especiales</p>
+            </motion.div>
           )}
         </div>
 
-        <input
+        <motion.input
           type="text"
-          {...register("matricula", { required: true })}
-          placeholder="Matricula"
+          {...register("matricula", {
+            required: true,
+            pattern: /^[a-zA-Z0-9]{0,10}$/,
+          })}
+          placeholder="Matrícula"
           maxLength={10}
           className="form__items__input"
-          autoFocus
-        ></input>
+          animate={matricula}
+          onChange={handleInputChange}
+        ></motion.input>
       </div>
       <div className="form__items">
         <div className="form__items__lbl">
           <label htmlFor="taller">Taller:</label>
           {errors.taller?.type === "required" && (
-            <div className="form__items__errors">
+            <motion.div
+              className="form__items__errors"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+            >
               <span className="material-symbols-outlined">report</span>
               <p>Campo obligatorio</p>
-            </div>
+            </motion.div>
           )}
         </div>
 
@@ -188,10 +308,15 @@ const Form = () => {
         <div className="form__items__lbl">
           <label htmlFor="usuario_BDC">Usuario BDC:</label>
           {errors.usuario_BDC?.type === "required" && (
-            <div className="form__items__errors">
+            <motion.div
+              className="form__items__errors"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+            >
               <span className="material-symbols-outlined">report</span>
               <p>Campo obligatorio</p>
-            </div>
+            </motion.div>
           )}
         </div>
 
@@ -206,17 +331,22 @@ const Form = () => {
       <div className="form-btn">
         <motion.button
           className="form-btn__submit"
-          initial={{ opacity: 0.7, y: 0 }}
+          initial={{ opacity: 0.7, scale: 1 }}
           whileHover={{
-            y: -5,
+            scale: 1.08,
             opacity: 1,
           }}
           transition={{ ease: "easeInOut", duration: 0.3 }}
         >
           Enviar
         </motion.button>
+        <motion.div
+          className="form-btn__loader"
+          initial={{ rotate: 0, opacity: 0 }}
+          animate={loader}
+        ></motion.div>
       </div>
-    </form>
+    </motion.form>
   );
 };
 

@@ -5,9 +5,17 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
+    padding: 10px;
     &__title{
         margin: 20px 0px;
         color: var(--sc-color-dark);
+    }
+}
+
+@media (max-width:480px){
+    .page-ctnr{
+        &__title{
+            font-size: 1.1rem;
+        }
     }
 }
