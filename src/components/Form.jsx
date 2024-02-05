@@ -74,6 +74,7 @@ const Form = () => {
       matricula.start({
         borderColor: "#00b2e0",
       });
+
     }
     if (regexNumber.test(inputPhone) == false) {
       numberA.start({
@@ -127,6 +128,7 @@ const Form = () => {
       ref={form}
     >
       <div className="form__status">
+
         <span className="material-symbols-outlined form__status__icon">
           description
         </span>
@@ -215,9 +217,11 @@ const Form = () => {
           })}
           placeholder="Teléfono"
           className="form__items__input"
+
           animate={numberA}
           onChange={handleInputTelefono}
         ></motion.input>
+
       </div>
       <div className="form__items">
         <div className="form__items__lbl">
