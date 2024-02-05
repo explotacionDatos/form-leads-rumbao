@@ -110,7 +110,6 @@ const Form = () => {
       ref={form}
     >
       <div className="form__status">
-
         <span className="material-symbols-outlined form__status__icon">
           description
         </span>
@@ -140,20 +139,17 @@ const Form = () => {
             <p>Error al enviar el formulario</p>
           </motion.div>
         )}
-
       </div>
       <div className="form__items">
         <div className="form__items__lbl">
           <label htmlFor="nombre_cliente">Nombre de cliente:</label>
           {errors.nombre_cliente?.type === "required" && (
-
             <motion.div
               className="form__items__errors"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
             >
-
               <span className="material-symbols-outlined">report</span>
               <p>Campo obligatorio</p>
             </motion.div>
@@ -171,14 +167,12 @@ const Form = () => {
         <div className="form__items__lbl">
           <label htmlFor="telefono_cliente">Teléfono de cliente:</label>
           {errors.telefono_cliente?.type === "required" && (
-
             <motion.div
               className="form__items__errors"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
             >
-
               <span className="material-symbols-outlined">report</span>
               <p>Campo obligatorio</p>
             </motion.div>
@@ -190,21 +184,18 @@ const Form = () => {
           {...register("telefono_cliente", { required: true })}
           placeholder="Teléfono"
           className="form__items__input"
-          autoFocus
         ></input>
       </div>
       <div className="form__items">
         <div className="form__items__lbl">
           <label htmlFor="matricula">Matrícula:</label>
           {errors.matricula?.type === "required" && (
-
             <motion.div
               className="form__items__errors"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
             >
-
               <span className="material-symbols-outlined">report</span>
               <p>Campo obligatorio</p>
             </motion.div>
@@ -239,14 +230,12 @@ const Form = () => {
         <div className="form__items__lbl">
           <label htmlFor="taller">Taller:</label>
           {errors.taller?.type === "required" && (
-
             <motion.div
               className="form__items__errors"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
             >
-
               <span className="material-symbols-outlined">report</span>
               <p>Campo obligatorio</p>
             </motion.div>
@@ -318,14 +307,12 @@ const Form = () => {
         <div className="form__items__lbl">
           <label htmlFor="usuario_BDC">Usuario BDC:</label>
           {errors.usuario_BDC?.type === "required" && (
-
             <motion.div
               className="form__items__errors"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
             >
-
               <span className="material-symbols-outlined">report</span>
               <p>Campo obligatorio</p>
             </motion.div>
