@@ -12,16 +12,23 @@ const Form = () => {
   //estado de enviado y input matricula
   const [send, setSend] = useState(2);
   const [inputValue, setInputValue] = useState("");
+  const [inputPhone, setInputPhone] = useState("");
   //regex para validar campo matricula
   const regex = /^[a-zA-Z0-9]{0,10}$/;
+  const regexNumber = /^\+?0{0,2}\d*$/;
+
   //animaciones
   const loader = useAnimation();
   const appearMsg = useAnimation();
   const matricula = useAnimation();
-
+  const numberA = useAnimation();
   //evento onChange del campo matricula
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
+  };
+  //evento onChange del campo telefono
+  const handleInputTelefono = (event) => {
+    setInputPhone(event.target.value);
   };
 
   //evento onsubmit para enviar formulario -------------------------------------------------
@@ -60,7 +67,6 @@ const Form = () => {
   //verificar que el estado de enviado haya cambiado
   useEffect(() => {
     if (regex.test(inputValue) == false) {
-      console.log("reject");
       matricula.start({
         borderColor: "#ff544",
       });
@@ -68,8 +74,17 @@ const Form = () => {
       matricula.start({
         borderColor: "#00b2e0",
       });
-
     }
+    if (regexNumber.test(inputPhone) == false) {
+      numberA.start({
+        borderColor: "#ff544",
+      });
+    } else {
+      numberA.start({
+        borderColor: "#00b2e0",
+      });
+    }
+
     if (send == 1) {
       setStatus(1);
       loader.start({ opacity: 0 });
@@ -99,7 +114,7 @@ const Form = () => {
         setSend(2);
       }, 2200);
     }
-  }, [send, status, inputValue]);
+  }, [send, status, inputValue, inputPhone]);
 
   //elementos render
   return (
@@ -112,8 +127,6 @@ const Form = () => {
       ref={form}
     >
       <div className="form__status">
-
-
         <span className="material-symbols-outlined form__status__icon">
           description
         </span>
@@ -143,20 +156,17 @@ const Form = () => {
             <p>Error al enviar el formulario</p>
           </motion.div>
         )}
-
       </div>
       <div className="form__items">
         <div className="form__items__lbl">
           <label htmlFor="nombre_cliente">Nombre de cliente:</label>
           {errors.nombre_cliente?.type === "required" && (
-
             <motion.div
               className="form__items__errors"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
             >
-
               <span className="material-symbols-outlined">report</span>
               <p>Campo obligatorio</p>
             </motion.div>
@@ -174,39 +184,51 @@ const Form = () => {
         <div className="form__items__lbl">
           <label htmlFor="telefono_cliente">Teléfono de cliente:</label>
           {errors.telefono_cliente?.type === "required" && (
-
             <motion.div
               className="form__items__errors"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
             >
-
               <span className="material-symbols-outlined">report</span>
               <p>Campo obligatorio</p>
             </motion.div>
           )}
+          {errors.telefono_cliente?.type === "pattern" && (
+            <motion.div
+              className="form__items__errors"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+            >
+              <span className="material-symbols-outlined">report</span>
+              <p>Número no válido</p>
+            </motion.div>
+          )}
         </div>
 
-        <input
-          type="number"
-          {...register("telefono_cliente", { required: true })}
+        <motion.input
+          type="text"
+          {...register("telefono_cliente", {
+            required: true,
+            pattern: /^\+?0{0,2}\d+$/,
+          })}
           placeholder="Teléfono"
           className="form__items__input"
-        ></input>
+          animate={numberA}
+          onChange={handleInputTelefono}
+        ></motion.input>
       </div>
       <div className="form__items">
         <div className="form__items__lbl">
           <label htmlFor="matricula">Matrícula:</label>
           {errors.matricula?.type === "required" && (
-
             <motion.div
               className="form__items__errors"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
             >
-
               <span className="material-symbols-outlined">report</span>
               <p>Campo obligatorio</p>
             </motion.div>
@@ -241,14 +263,12 @@ const Form = () => {
         <div className="form__items__lbl">
           <label htmlFor="taller">Taller:</label>
           {errors.taller?.type === "required" && (
-
             <motion.div
               className="form__items__errors"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
             >
-
               <span className="material-symbols-outlined">report</span>
               <p>Campo obligatorio</p>
             </motion.div>
@@ -259,6 +279,7 @@ const Form = () => {
           {...register("taller", { required: true })}
           className="form__items__slct"
         >
+          <option value="">Seleccionar taller...</option>
           <option value={taller.data[0].campaignId}>VIGO AUDI - Cita</option>
           <option value={taller.data[1].campaignId}>VIGO VW - Cita</option>
           <option value={taller.data[2].campaignId}>VIGO LCV - Cita</option>
@@ -285,6 +306,7 @@ const Form = () => {
           {...register("motivo_visita", { required: true })}
           className="form__items__slct"
         >
+          <option value="">Seleccionar Motivo...</option>
           <option value="Medida de Servicio">Medida de Servicio</option>
           <option value="Revisión y mantenimiento">
             Revisión y mantenimiento
@@ -320,14 +342,12 @@ const Form = () => {
         <div className="form__items__lbl">
           <label htmlFor="usuario_BDC">Usuario BDC:</label>
           {errors.usuario_BDC?.type === "required" && (
-
             <motion.div
               className="form__items__errors"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
             >
-
               <span className="material-symbols-outlined">report</span>
               <p>Campo obligatorio</p>
             </motion.div>
@@ -338,7 +358,6 @@ const Form = () => {
           className="form__items__input"
           type="text"
           {...register("usuario_BDC", { required: true })}
-          maxLength={4}
           placeholder="Usuario BDC"
         />
       </div>
