@@ -15,8 +15,7 @@ const Form = () => {
   const [inputPhone, setInputPhone] = useState("");
   //regex para validar campo matricula
   const regex = /^[a-zA-Z0-9]{0,10}$/;
-  const regexNumber = /^\+?0{0,2}\d*$/;
-
+  const regexNumber = /^\d*$/;
   //animaciones
   const loader = useAnimation();
   const appearMsg = useAnimation();
@@ -74,7 +73,6 @@ const Form = () => {
       matricula.start({
         borderColor: "#00b2e0",
       });
-
     }
     if (regexNumber.test(inputPhone) == false) {
       numberA.start({
@@ -128,7 +126,6 @@ const Form = () => {
       ref={form}
     >
       <div className="form__status">
-
         <span className="material-symbols-outlined form__status__icon">
           description
         </span>
@@ -213,15 +210,13 @@ const Form = () => {
           type="text"
           {...register("telefono_cliente", {
             required: true,
-            pattern: /^\+?0{0,2}\d+$/,
+            pattern: /^\d*$/,
           })}
           placeholder="Teléfono"
           className="form__items__input"
-
-          animate={numberA}
           onChange={handleInputTelefono}
+          animate={numberA}
         ></motion.input>
-
       </div>
       <div className="form__items">
         <div className="form__items__lbl">
