@@ -68,6 +68,7 @@ const Form = () => {
       matricula.start({
         borderColor: "#00b2e0",
       });
+
     }
     if (send == 1) {
       setStatus(1);
@@ -84,6 +85,7 @@ const Form = () => {
         setSend(2);
       }, 4600);
     }
+
     if (send == 0) {
       setStatus(0);
       loader.start({ opacity: 0 });
@@ -110,6 +112,7 @@ const Form = () => {
       ref={form}
     >
       <div className="form__status">
+
 
         <span className="material-symbols-outlined form__status__icon">
           description
@@ -190,7 +193,6 @@ const Form = () => {
           {...register("telefono_cliente", { required: true })}
           placeholder="Teléfono"
           className="form__items__input"
-          autoFocus
         ></input>
       </div>
       <div className="form__items">
