@@ -128,7 +128,6 @@ const Form = () => {
       ref={form}
     >
       <div className="form__status">
-
         <span className="material-symbols-outlined form__status__icon">
           description
         </span>
@@ -221,7 +220,6 @@ const Form = () => {
           onChange={handleInputTelefono}
           animate={numberA}
         ></motion.input>
-
       </div>
       <div className="form__items">
         <div className="form__items__lbl">
@@ -339,7 +337,7 @@ const Form = () => {
           rows="3"
           placeholder="Observación"
           className="form__items__input form__items__lbl--textarea"
-          maxLength={140}
+          maxLength={300}
         ></textarea>
       </div>
       <div className="form__items">
