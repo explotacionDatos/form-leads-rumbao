@@ -1,6 +1,13 @@
 import React, { useEffect, useState, useRef } from "react";
-import { animate, delay, easeInOut, motion, useAnimation } from "framer-motion";
-import { useForm } from "react-hook-form";
+import {
+  animate,
+  delay,
+  easeInOut,
+  filterProps,
+  motion,
+  useAnimation,
+} from "framer-motion";
+import { useForm, Controller } from "react-hook-form";
 import taller from "../components/taller.json";
 import { sendFormRequest } from "../api/rumbao.api";
 const Form = () => {
@@ -8,6 +15,7 @@ const Form = () => {
     register,
     handleSubmit,
     formState: { errors },
+    control,
   } = useForm();
   //estado de enviado y input matricula
   const [send, setSend] = useState(2);
@@ -31,11 +39,51 @@ const Form = () => {
   const handleInputTelefono = (event) => {
     setInputPhone(event.target.value);
   };
+  //CHECKLIST TALLER------------------------------------------------------------------------
+  const items = taller.data;
 
-  //evento onsubmit para enviar formulario -------------------------------------------------
+  //ORIGEN BDC
+  const itemsBDC = items.map((item) => {
+    if (item.id <= 9) {
+      return (
+        <div className="mv__items" key={item.id}>
+          <Controller
+            name="title"
+            control={control}
+            rules={{ required: "Este campo es requerido" }}
+            render={({ field }) => (
+              <input {...field} type="radio" value={item.title}></input>
+            )}
+          />
+
+          <label htmlFor={item.title}>{item.title}</label>
+        </div>
+      );
+    }
+  });
+  //ORIGEN POSTVENTA
+  const itemsPostventa = items.map((item) => {
+    if (item.id >= 10) {
+      return (
+        <div className="mv__items" key={item.id}>
+          <Controller
+            name="title"
+            control={control}
+            rules={{ required: "Este campo es requerido" }}
+            render={({ field }) => (
+              <input {...field} type="radio" value={item.title}></input>
+            )}
+          />
+          <label htmlFor={item.title}>{item.title}</label>
+        </div>
+      );
+    }
+  });
+  //----------------------------------------------------------------------------------------
+  //Evento onsubmit para enviar formulario -------------------------------------------------
 
   const onSubmit = async (data) => {
-    const obj = taller.data.filter((combo) => combo.campaignId == data.taller);
+    const obj = taller.data.filter((combo) => combo.title == data.title);
     loader.start({
       opacity: 1,
       rotate: [50, 180, 360, 0],
@@ -65,7 +113,7 @@ const Form = () => {
   const [status, setStatus] = useState(0);
   const form = useRef(null);
 
-  //verificar que el estado de enviado haya cambiado
+  //verificar que el estado de enviado haya cambiado--------------------------------
   useEffect(() => {
     if (regex.test(inputValue) == false) {
       matricula.start({
@@ -116,8 +164,8 @@ const Form = () => {
       }, 2200);
     }
   }, [send, status, inputValue, inputPhone]);
-
-  //elementos render
+  //------------------------------------------------------------------------------------------
+  //elementos render--------------------------------------------------------------------------
   return (
     <motion.form
       onSubmit={handleSubmit(onSubmit)}
@@ -261,10 +309,11 @@ const Form = () => {
           onChange={handleInputChange}
         ></motion.input>
       </div>
-      <div className="form__items">
+      {/*-----------------------------TALLER----------------------------------------*/}
+      <div className="form__items --form__items__cl">
         <div className="form__items__lbl">
           <label htmlFor="taller">Taller:</label>
-          {errors.taller?.type === "required" && (
+          {errors.title?.type === "required" && (
             <motion.div
               className="form__items__errors"
               initial={{ opacity: 0 }}
@@ -276,23 +325,21 @@ const Form = () => {
             </motion.div>
           )}
         </div>
-
-        <select
-          {...register("taller", { required: true })}
-          className="form__items__slct"
-        >
-          <option value="">Seleccionar taller...</option>
-          <option value={taller.data[0].campaignId}>VIGO AUDI - Cita</option>
-          <option value={taller.data[1].campaignId}>VIGO VW - Cita</option>
-          <option value={taller.data[2].campaignId}>VIGO LCV - Cita</option>
-          <option value={taller.data[3].campaignId}>
-            VILAGARCIA AUDI - Cita
-          </option>
-          <option value={taller.data[4].campaignId}>
-            VILAGARCIA VW - Cita
-          </option>
-        </select>
+        <div className="mv">
+          <div className="mv__ctnr">
+            <fieldset className="mv__ctnr__fset">
+              <legend>ORIGEN BDC</legend>
+              {itemsBDC}
+            </fieldset>
+            <fieldset className="mv__ctnr__fset">
+              <legend>ORIGEN POSTVENTA</legend>
+              {itemsPostventa}
+            </fieldset>
+          </div>
+        </div>
       </div>
+      {/*-----------------------------TALLER----------------------------------------*/}
+      {/*-----------------------------MOTIVO VISITA---------------------------------*/}
       <div className="form__items">
         <div className="form__items__lbl">
           <label htmlFor="motivo_visita">Motivo de visita:</label>
@@ -324,8 +371,22 @@ const Form = () => {
           <option value="Consulta o duda taller carrocería">
             Consulta o duda taller carrocería
           </option>
+          <option value="Segunda cita tras llegada de recambios">
+            Segunda cita tras llegada de recambios
+          </option>
+          <option value="Segunda cita tras solución técnica DISS">
+            Segunda cita tras solución técnica DISS
+          </option>
+          <option value="Segunda cita para prueba dinámica con técnico">
+            Segunda cita para prueba dinámica con técnico
+          </option>
+          <option value="Segunda cita autorización aseguradora">
+            Segunda cita autorización aseguradora
+          </option>
         </select>
       </div>
+      {/*-----------------------------MOTIVO VISITA---------------------------------*/}
+      {/*-----------------------------OBSERVACIONES---------------------------------*/}
       <div className="form__items">
         <div className="form__items__lbl">
           <label htmlFor="observacion">Observaciones BDC:</label>
@@ -340,6 +401,8 @@ const Form = () => {
           maxLength={300}
         ></textarea>
       </div>
+      {/*-----------------------------OBSERVACIONES---------------------------------*/}
+      {/*-----------------------------USUARIO BDC-----------------------------------*/}
       <div className="form__items">
         <div className="form__items__lbl">
           <label htmlFor="usuario_BDC">Usuario BDC:</label>
@@ -363,6 +426,7 @@ const Form = () => {
           placeholder="Usuario BDC"
         />
       </div>
+      {/*-----------------------------USUARIO BDC-----------------------------------*/}
       <div className="form-btn">
         <motion.button
           className="form-btn__submit"

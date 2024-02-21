@@ -1,0 +1,36 @@
+.mv{
+    display: flex;
+    justify-content: center;
+    
+    width: 90%;
+    height: 100%;
+    background-color: #70707050;
+    margin-bottom: 10px;
+
+    &__ctnr{
+        width: 850px;
+        display: flex;
+        justify-content: space-between;
+        background-color: var(--sc-color-wh);
+
+        &__fset{
+            width: 48%;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--sc-color-blue);
+            padding: 0px 10px;
+            
+        }
+    }
+
+    &__items{
+        margin: 5px;
+        input{
+            margin-right: 5px;
+        }
+        label{
+            font-size: 0.9rem;
+        }
+    }
+}
+
