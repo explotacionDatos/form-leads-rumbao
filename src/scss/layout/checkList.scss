@@ -2,13 +2,13 @@
     display: flex;
     justify-content: center;
     
-    width: 90%;
+    width: 95%;
     height: 100%;
     background-color: #70707050;
     margin-bottom: 10px;
 
     &__ctnr{
-        width: 850px;
+        width: 100%;
         display: flex;
         justify-content: space-between;
         background-color: var(--sc-color-wh);
@@ -29,7 +29,8 @@
             margin-right: 5px;
         }
         label{
-            font-size: 0.9rem;
+            font-size: 0.8rem;
+            letter-spacing: 0.001rem;
         }
     }
 }

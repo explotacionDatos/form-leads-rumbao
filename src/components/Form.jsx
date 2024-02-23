@@ -310,8 +310,8 @@ const Form = () => {
         ></motion.input>
       </div>
       {/*-----------------------------TALLER----------------------------------------*/}
-      <div className="form__items --form__items__cl">
-        <div className="form__items__lbl">
+      <div className="form__items form__items--cl">
+        <div className="form__items__lbl form__items__lbl--cbox">
           <label htmlFor="taller">Taller:</label>
           {errors.title?.type === "required" && (
             <motion.div
