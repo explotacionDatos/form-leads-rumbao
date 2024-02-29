@@ -343,7 +343,9 @@ const Form = () => {
       </div>
       {/*-----------------------------TALLER----------------------------------------*/}
       {/*-----------------------------MOTIVO VISITA---------------------------------*/}
+
       {/*<div className="form__items">
+
         <div className="form__items__lbl">
           <label htmlFor="motivo_visita">Motivo de visita:</label>
           {errors.motivo_visita?.type === "required" && (
@@ -387,7 +389,9 @@ const Form = () => {
             Segunda cita autorización aseguradora
           </option>
         </select>
+
       </div>*/}
+
       {/*-----------------------------MOTIVO VISITA---------------------------------*/}
       {/*-----------------------------OBSERVACIONES---------------------------------*/}
       <div className="form__items">
