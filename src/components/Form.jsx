@@ -42,6 +42,7 @@ const Form = () => {
   //CHECKLIST TALLER------------------------------------------------------------------------
   const items = taller.data;
 
+
   //ORIGEN BDC
   const itemsBDC = items.map((item) => {
     if (item.id <= 9) {
@@ -55,6 +56,7 @@ const Form = () => {
               <input {...field} type="radio" value={item.title}></input>
             )}
           />
+
 
           <label htmlFor={item.title}>{item.title}</label>
         </div>
@@ -95,7 +97,6 @@ const Form = () => {
       priorityGroupId: obj[0].priorityGroupId,
       nombre: data.nombre_cliente,
       aux1: data.matricula,
-      aux3: data.motivo_visita,
       aux9: data.observacion + " --- " + data.usuario_BDC,
     };
     console.log(params);
@@ -268,6 +269,12 @@ const Form = () => {
           onChange={handleInputTelefono}
           animate={numberA}
         ></motion.input>
+
+        <span className="form__items__tooltip">
+          Usar 00+CODIGO PAIS+NUMERO (sin espacios ni simbolos) ej.
+          0034620527172
+        </span>
+
       </div>
       <div className="form__items">
         <div className="form__items__lbl">
@@ -340,7 +347,11 @@ const Form = () => {
       </div>
       {/*-----------------------------TALLER----------------------------------------*/}
       {/*-----------------------------MOTIVO VISITA---------------------------------*/}
-      <div className="form__items">
+
+
+      {/*<div className="form__items">
+
+
         <div className="form__items__lbl">
           <label htmlFor="motivo_visita">Motivo de visita:</label>
           {errors.motivo_visita?.type === "required" && (
@@ -384,7 +395,11 @@ const Form = () => {
             Segunda cita autorización aseguradora
           </option>
         </select>
-      </div>
+
+
+      </div>*/}
+
+
       {/*-----------------------------MOTIVO VISITA---------------------------------*/}
       {/*-----------------------------OBSERVACIONES---------------------------------*/}
       <div className="form__items">
@@ -395,10 +410,10 @@ const Form = () => {
         <textarea
           type="text"
           {...register("observacion")}
-          rows="3"
+          rows="7"
           placeholder="Observación"
           className="form__items__input form__items__lbl--textarea"
-          maxLength={300}
+          maxLength={500}
         ></textarea>
       </div>
       {/*-----------------------------OBSERVACIONES---------------------------------*/}
