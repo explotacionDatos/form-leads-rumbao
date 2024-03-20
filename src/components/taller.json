@@ -51,48 +51,93 @@
     },
     {
         "id":10,
+        "title":"PONTEVEDRA AUDI - Cita",
+        "campaignId":1686,
+        "priorityGroupId":8479
+    },
+    {
+        "id":11,
+        "title":"PONTEVEDRA VW - Cita",
+        "campaignId":1690,
+        "priorityGroupId":8483
+    },
+    {
+        "id":12,
+        "title":"PONTEVEDRA LCV - Cita",
+        "campaignId":1694,
+        "priorityGroupId":8487
+    },
+    {
+        "id":13,
         "title":"VIGO AUDI - Segunda Cita",
         "campaignId":1640,
         "priorityGroupId":8283
     },
     {
-        "id":11,
+        "id":14,
         "title":"VIGO VW - Segunda Cita",
         "campaignId":1646,
         "priorityGroupId":8290
     }, {
-        "id":12,
+        "id":15,
         "title":"VIGO LCV- Segunda Cita",
         "campaignId":1646,
         "priorityGroupId":8290
     }, {
-        "id":13,
-        "title":"VIGO AUDI CARROCERÍA - Segunda Cita ",
+        "id":16,
+        "title":"VIGO AUDI CARROCERÍA - Segunda Cita",
         "campaignId":1648,
         "priorityGroupId":8313
     }, {
-        "id":14,
-        "title":"VIGO VW CARROCERÍA - Segunda Cita ",
+        "id":17,
+        "title":"VIGO VW CARROCERÍA - Segunda Cita",
         "campaignId":1642,
         "priorityGroupId":8285
     },{
-        "id":15,
-        "title":"VILAGARCIA AUDI - Segunda Cita ",
+        "id":18,
+        "title":"VILAGARCIA AUDI - Segunda Cita",
         "campaignId":1640,
         "priorityGroupId":8283
     },{
-        "id":16,
-        "title":"VILAGARCIA VW - Segunda Cita ",
+        "id":19,
+        "title":"VILAGARCIA VW - Segunda Cita",
         "campaignId":1646,
         "priorityGroupId":8290
     },{
-        "id":17,
-        "title":"VILAGARCIA AUDI CARROCERÍA - Segunda Cita ",
+        "id":20,
+        "title":"VILAGARCIA AUDI CARROCERÍA - Segunda Cita",
         "campaignId":1648,
         "priorityGroupId":8313
     },{
-        "id":18,
-        "title":"VILAGARCIA VW CARROCERÍA - Segunda Cita  ",
+        "id":21,
+        "title":"VILAGARCIA VW CARROCERÍA - Segunda Cita",
+        "campaignId":1642,
+        "priorityGroupId":8285
+    },
+    {
+        "id":22,
+        "title":"PONTEVEDRA AUDI - Segunda Cita",
+        "campaignId":1640,
+        "priorityGroupId":8283
+    },
+    {
+        "id":23,
+        "title":"PONTEVEDRA VW - Segunda Cita",
+        "campaignId":1646,
+        "priorityGroupId":8290
+    },{
+        "id":24,
+        "title":"PONTEVEDRA LCV - Segunda Cita",
+        "campaignId":1646,
+        "priorityGroupId":8290
+    },{
+        "id":25,
+        "title":"PONTEVEDRA AUDI - CARROCERIA - Segunda Cita",
+        "campaignId":1648,
+        "priorityGroupId":8313
+    },{
+        "id":26,
+        "title":"PONTEVEDRA VW - CARROCERIA - Segunda Cita",
         "campaignId":1642,
         "priorityGroupId":8285
     }]
