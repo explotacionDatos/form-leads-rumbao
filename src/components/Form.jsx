@@ -42,6 +42,7 @@ const Form = () => {
   //CHECKLIST TALLER------------------------------------------------------------------------
   const items = taller.data;
 
+
   //ORIGEN BDC
   const itemsBDC = items.map((item) => {
     if (item.id <= 12) {
@@ -55,6 +56,7 @@ const Form = () => {
               <input {...field} type="radio" value={item.title}></input>
             )}
           />
+
 
           <label htmlFor={item.title}>{item.title}</label>
         </div>
@@ -267,10 +269,14 @@ const Form = () => {
           onChange={handleInputTelefono}
           animate={numberA}
         ></motion.input>
+
+
         <span className="form__items__tooltip">
           Usar 00+CODIGO PAIS+NUMERO (sin espacios ni simbolos) ej.
           0034620527172
         </span>
+
+
       </div>
       <div className="form__items">
         <div className="form__items__lbl">
@@ -344,7 +350,9 @@ const Form = () => {
       {/*-----------------------------TALLER----------------------------------------*/}
       {/*-----------------------------MOTIVO VISITA---------------------------------*/}
 
+
       {/*<div className="form__items">
+
 
         <div className="form__items__lbl">
           <label htmlFor="motivo_visita">Motivo de visita:</label>
@@ -391,6 +399,7 @@ const Form = () => {
         </select>
 
       </div>*/}
+
 
       {/*-----------------------------MOTIVO VISITA---------------------------------*/}
       {/*-----------------------------OBSERVACIONES---------------------------------*/}
