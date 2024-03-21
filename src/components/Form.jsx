@@ -270,7 +270,6 @@ const Form = () => {
           animate={numberA}
         ></motion.input>
 
-
         <span className="form__items__tooltip">
           Usar 00+CODIGO PAIS+NUMERO (sin espacios ni simbolos) ej.
           0034620527172
@@ -397,6 +396,7 @@ const Form = () => {
             Segunda cita autorización aseguradora
           </option>
         </select>
+
 
       </div>*/}
 
