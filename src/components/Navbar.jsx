@@ -1,14 +1,21 @@
 import React from "react";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
 
-const Navbar = () => {
+const NavBar = () => {
   return (
-    <nav className="navbar">
-      <img
-        src="/src/assets/logo_custometric_cuadrado.png"
-        className="navbar__img"
-      ></img>
-    </nav>
+    <Navbar bg="dark" data-bs-theme="dark">
+      <Container>
+        <Navbar.Brand href="/">Rumbao</Navbar.Brand>
+        <Nav className="me-auto">
+          <Nav.Link href="/">Home</Nav.Link>
+          <Nav.Link href="/bdc">BDC</Nav.Link>
+          <Nav.Link href="/postventa">POSTVENTA</Nav.Link>
+        </Nav>
+      </Container>
+    </Navbar>
   );
 };
 
-export default Navbar;
+export default NavBar;
