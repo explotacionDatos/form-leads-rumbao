@@ -1,4 +1,5 @@
 # Logs
+docker-compose.yml
 logs
 *.log
 npm-debug.log*
@@ -23,5 +24,4 @@ package-lock.json
 *.njsproj
 *.sln
 *.sw
-docker-compose.yml
 .env
