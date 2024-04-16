@@ -10,7 +10,9 @@ import {
 import { useForm, Controller } from "react-hook-form";
 import taller from "../components/taller.json";
 import { sendFormRequest } from "../api/rumbao.api";
-const Form = () => {
+
+const Form = (props) => {
+  const { tallerBDC } = props;
   const {
     register,
     handleSubmit,
@@ -331,14 +333,17 @@ const Form = () => {
         </div>
         <div className="mv">
           <div className="mv__ctnr">
-            <fieldset className="mv__ctnr__fset">
-              <legend>ORIGEN BDC</legend>
-              {itemsBDC}
-            </fieldset>
-            <fieldset className="mv__ctnr__fset">
-              <legend>ORIGEN POSTVENTA</legend>
-              {itemsPostventa}
-            </fieldset>
+            {tallerBDC ? (
+              <fieldset className="mv__ctnr__fset">
+                <legend>ORIGEN BDC</legend>
+                <div className="mv__ctnr__itemsgroup">{itemsBDC}</div>
+              </fieldset>
+            ) : (
+              <fieldset className="mv__ctnr__fset">
+                <legend className="mv__ctnr__legend">ORIGEN POSTVENTA</legend>
+                <div className="mv__ctnr__itemsgroup">{itemsPostventa}</div>
+              </fieldset>
+            )}
           </div>
         </div>
       </div>
@@ -399,7 +404,7 @@ const Form = () => {
       {/*-----------------------------OBSERVACIONES---------------------------------*/}
       <div className="form__items">
         <div className="form__items__lbl">
-          <label htmlFor="observacion">Observaciones BDC:</label>
+          <label htmlFor="observacion">Observaciones:</label>
         </div>
 
         <textarea
@@ -415,7 +420,7 @@ const Form = () => {
       {/*-----------------------------USUARIO BDC-----------------------------------*/}
       <div className="form__items">
         <div className="form__items__lbl">
-          <label htmlFor="usuario_BDC">Usuario BDC:</label>
+          <label htmlFor="usuario_BDC">Usuario:</label>
           {errors.usuario_BDC?.type === "required" && (
             <motion.div
               className="form__items__errors"
@@ -433,7 +438,7 @@ const Form = () => {
           className="form__items__input"
           type="text"
           {...register("usuario_BDC", { required: true })}
-          placeholder="Usuario BDC"
+          placeholder="Usuario"
         />
       </div>
       {/*-----------------------------USUARIO BDC-----------------------------------*/}

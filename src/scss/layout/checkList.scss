@@ -1,7 +1,7 @@
 .mv{
     display: flex;
     justify-content: center;
-    
+
     width: 95%;
     height: 100%;
     background-color: #70707050;
@@ -10,20 +10,26 @@
     &__ctnr{
         width: 100%;
         display: flex;
-        justify-content: space-between;
+        
         background-color: var(--sc-color-wh);
 
         &__fset{
-            width: 48%;
+            width: 100%;
             display: flex;
             flex-direction: column;
             border: 1px solid var(--sc-color-blue);
             padding: 0px 10px;
-            
         }
+        &__itemsgroup{
+            width: 100%;
+            height: 300px;
+            display: flex;
+            flex-flow: column wrap;
+           }
     }
 
     &__items{
+        width: 50%;
         margin: 5px;
         input{
             margin-right: 5px;

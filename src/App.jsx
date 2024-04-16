@@ -1,10 +1,21 @@
-import FormRombao from "./Pages/FormRumbao";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import FormBDC from "./Pages/FormRumbaoBDC";
+import FormPostventa from "./Pages/FormRumbaoPost";
+import HomePage from "./Pages/Home";
 function App() {
   return (
     <div className="app-ctnr">
-      <FormRombao />
+      <Navbar />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage />}></Route>
+          <Route path="/bdc" element={<FormBDC />}></Route>
+          <Route path="/postventa" element={<FormPostventa />}></Route>
+        </Routes>
+      </BrowserRouter>
       <Footer />
     </div>
   );
