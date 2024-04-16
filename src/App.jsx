@@ -13,7 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
           <Route path="/bdc" element={<FormBDC />}></Route>
-          <Route path="/postventa" element={<FormPostventa />}></Route>
+          <Route path="/posventa" element={<FormPostventa />}></Route>
         </Routes>
       </BrowserRouter>
       <Footer />

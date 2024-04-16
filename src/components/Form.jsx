@@ -340,7 +340,7 @@ const Form = (props) => {
               </fieldset>
             ) : (
               <fieldset className="mv__ctnr__fset">
-                <legend className="mv__ctnr__legend">ORIGEN POSTVENTA</legend>
+                <legend className="mv__ctnr__legend">ORIGEN POSVENTA</legend>
                 <div className="mv__ctnr__itemsgroup">{itemsPostventa}</div>
               </fieldset>
             )}
