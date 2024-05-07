@@ -46,7 +46,7 @@ const Form = (props) => {
 
   //ORIGEN BDC
   const itemsBDC = items.map((item) => {
-    if (item.id <= 14) {
+    if (item.id <= 10) {
       return (
         <div className="mv__items" key={item.id}>
           <Controller
@@ -65,7 +65,7 @@ const Form = (props) => {
   });
   //ORIGEN POSTVENTA
   const itemsPostventa = items.map((item) => {
-    if (item.id >= 15) {
+    if (item.id >= 11) {
       return (
         <div className="mv__items" key={item.id}>
           <Controller
